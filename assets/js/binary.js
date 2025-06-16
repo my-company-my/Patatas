@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v2.0.56/---simulator","cdnUrl":"https://cdn.makecode.com","version":"0.1.0","target":"arcade","targetVersion":"2.0.56","repo":"my-company-my/patatas"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v2.0.56/---simulator","cdnUrl":"https://cdn.makecode.com","version":"0.2.0","target":"arcade","targetVersion":"2.0.56","repo":"my-company-my/patatas"}
 // total=2639645 new=23.14% cached=72.18% other=4.69%
 (function (ectx) {
 'use strict';
@@ -643,7 +643,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P54786(s) {
+function _main___P55181(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1872,13 +1872,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P54786.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/Timers/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P54786.continuations = [ 73,74,117,119 ]
+_main___P55181.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/Timers/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P55181.continuations = [ 73,74,117,119 ]
 
-function _main___P54786_mk(s) {
+function _main___P55181_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P54786, depth: s.depth + 1,
+        parent: s, fn: _main___P55181, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -3523,8 +3523,8 @@ switch (step) {
     s.ps___35580 = undefined;
     s.xs___35585 = undefined;
     s.ei___35591 = undefined;
-    s.unnamed402___U4 = undefined;
-    s.unnamed403___U5 = undefined;
+    s.unnamed522___U4 = undefined;
+    s.unnamed523___U5 = undefined;
     s.ps___35580 = (globals.psm___32160);
     r0 = (s.ps___35580 == null);
     s.tmp_0 = r0;
@@ -3547,15 +3547,15 @@ switch (step) {
   case 16:
     r0 = s.retval;
     s.ei___35591 = (undefined);
-    s.unnamed402___U4 = (globals.enmyss_ins___32174);
-    s.unnamed403___U5 = (0);
+    s.unnamed522___U4 = (globals.enmyss_ins___32174);
+    s.unnamed523___U5 = (0);
   case 4:
-    s.tmp_0 = r0 = s.unnamed403___U5;
-    r0 = pxsim_Array__length(s.unnamed402___U4);
+    s.tmp_0 = r0 = s.unnamed523___U5;
+    r0 = pxsim_Array__length(s.unnamed522___U4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 13; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed402___U4, s.unnamed403___U5);
+    r0 = pxsim_Array__getAt(s.unnamed522___U4, s.unnamed523___U5);
     s.ei___35591 = (r0);
     s.tmp_2 = Sprite_vx__P29805_mk(s);
     s.tmp_2.arg0 = s.ei___35591;
@@ -3647,11 +3647,11 @@ switch (step) {
     r0 = s.retval;
   case 11:
   case 12:
-    r0 = (s.unnamed403___U5 + 1);
-    s.unnamed403___U5 = (r0);
+    r0 = (s.unnamed523___U5 + 1);
+    s.unnamed523___U5 = (r0);
     { step = 4; continue; }
   case 13:
-    s.unnamed402___U4 = (undefined);
+    s.unnamed522___U4 = (undefined);
     { step = 3; continue; }
   case 14:
   case 15:
@@ -3676,8 +3676,8 @@ function enmydel__P35578_mk(s) {
   ps___35580: undefined,
   xs___35585: undefined,
   ei___35591: undefined,
-  unnamed402___U4: undefined,
-  unnamed403___U5: undefined,
+  unnamed522___U4: undefined,
+  unnamed523___U5: undefined,
 } }
 
 
@@ -3698,8 +3698,8 @@ switch (step) {
     s.cgn___35639 = undefined;
     s.prs___35640 = undefined;
     s.gn___35658 = undefined;
-    s.unnamed404___U4 = undefined;
-    s.unnamed405___U5 = undefined;
+    s.unnamed524___U4 = undefined;
+    s.unnamed525___U5 = undefined;
     r0 = pxsim_Array__mk();
     s.prs___35640 = (r0);
   case 1:
@@ -3740,15 +3740,15 @@ switch (step) {
     s.sc___35638 = (r0);
     s.cgn___35639 = (0);
     s.gn___35658 = (undefined);
-    s.unnamed404___U4 = (globals.enmyssg1_ins___32175);
-    s.unnamed405___U5 = (0);
+    s.unnamed524___U4 = (globals.enmyssg1_ins___32175);
+    s.unnamed525___U5 = (0);
   case 2:
-    s.tmp_0 = r0 = s.unnamed405___U5;
-    r0 = pxsim_Array__length(s.unnamed404___U4);
+    s.tmp_0 = r0 = s.unnamed525___U5;
+    r0 = pxsim_Array__length(s.unnamed524___U4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 5; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed404___U4, s.unnamed405___U5);
+    r0 = pxsim_Array__getAt(s.unnamed524___U4, s.unnamed525___U5);
     s.gn___35658 = (r0);
     s.tmp_2 = console_log__P27812_mk(s);
     s.tmp_3 = Sprite_x__P29800_mk(s);
@@ -3859,11 +3859,11 @@ switch (step) {
   case 4:
     r0 = (s.cgn___35639 + 1);
     s.cgn___35639 = (r0);
-    r0 = (s.unnamed405___U5 + 1);
-    s.unnamed405___U5 = (r0);
+    r0 = (s.unnamed525___U5 + 1);
+    s.unnamed525___U5 = (r0);
     { step = 2; continue; }
   case 5:
-    s.unnamed404___U4 = (undefined);
+    s.unnamed524___U4 = (undefined);
     { step = 1; continue; }
   case 6:
     r0 = undefined;
@@ -3895,8 +3895,8 @@ function enmydel2__P35637_mk(s) {
   cgn___35639: undefined,
   prs___35640: undefined,
   gn___35658: undefined,
-  unnamed404___U4: undefined,
-  unnamed405___U5: undefined,
+  unnamed524___U4: undefined,
+  unnamed525___U5: undefined,
 } }
 
 
@@ -3914,8 +3914,8 @@ switch (step) {
   case 0:
 
     s.c___35726 = undefined;
-    s.unnamed406___U1 = undefined;
-    s.unnamed407___U2 = undefined;
+    s.unnamed526___U1 = undefined;
+    s.unnamed527___U2 = undefined;
   case 1:
     r0 = pxsim_numops_toBoolDecr(true);
     if (!r0) { step = 8; continue; }
@@ -3960,15 +3960,15 @@ switch (step) {
   case 2:
   case 3:
     s.c___35726 = (undefined);
-    s.unnamed406___U1 = (globals.rscoins_ins___32173);
-    s.unnamed407___U2 = (0);
+    s.unnamed526___U1 = (globals.rscoins_ins___32173);
+    s.unnamed527___U2 = (0);
   case 4:
-    s.tmp_0 = r0 = s.unnamed407___U2;
-    r0 = pxsim_Array__length(s.unnamed406___U1);
+    s.tmp_0 = r0 = s.unnamed527___U2;
+    r0 = pxsim_Array__length(s.unnamed526___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 7; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed406___U1, s.unnamed407___U2);
+    r0 = pxsim_Array__getAt(s.unnamed526___U1, s.unnamed527___U2);
     s.c___35726 = (r0);
     s.tmp_3 = Sprite_overlapsWith__P29867_mk(s);
     s.tmp_3.arg0 = globals.playersprite___32179;
@@ -4030,11 +4030,11 @@ switch (step) {
     r0 = s.retval;
   case 5:
   case 6:
-    r0 = (s.unnamed407___U2 + 1);
-    s.unnamed407___U2 = (r0);
+    r0 = (s.unnamed527___U2 + 1);
+    s.unnamed527___U2 = (r0);
     { step = 4; continue; }
   case 7:
-    s.unnamed406___U1 = (undefined);
+    s.unnamed526___U1 = (undefined);
     s.tmp_0 = pause__P27845_mk(s);
     s.tmp_0.arg0 = 20;
     s.callLocIdx = 249; s.pc = 22; return s.tmp_0;
@@ -4059,8 +4059,8 @@ function collect_coins__P35711_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   c___35726: undefined,
-  unnamed406___U1: undefined,
-  unnamed407___U2: undefined,
+  unnamed526___U1: undefined,
+  unnamed527___U2: undefined,
 } }
 
 
@@ -16831,14 +16831,14 @@ switch (step) {
     s.enmy1_locations___35414 = undefined;
     s.enmy2_locations___35417 = undefined;
     s.loc1___35421 = undefined;
-    s.unnamed396___U13 = undefined;
-    s.unnamed397___U14 = undefined;
+    s.unnamed516___U13 = undefined;
+    s.unnamed517___U14 = undefined;
     s.loc2___35440 = undefined;
-    s.unnamed398___U16 = undefined;
-    s.unnamed399___U17 = undefined;
+    s.unnamed518___U16 = undefined;
+    s.unnamed519___U17 = undefined;
     s.loc3___35480 = undefined;
-    s.unnamed400___U19 = undefined;
-    s.unnamed401___U20 = undefined;
+    s.unnamed520___U19 = undefined;
+    s.unnamed521___U20 = undefined;
     s.tmp_0 = helpers_getTileByName__P30803_mk(s);
     s.tmp_0.arg0 = "\n        ins\n    ";
     s.callLocIdx = 150; s.pc = 15; return s.tmp_0;
@@ -16934,15 +16934,15 @@ switch (step) {
     r0 = s.retval;
     s.enmy2_locations___35417 = (r0);
     s.loc1___35421 = (undefined);
-    s.unnamed396___U13 = (s.ins_locations___35411);
-    s.unnamed397___U14 = (0);
+    s.unnamed516___U13 = (s.ins_locations___35411);
+    s.unnamed517___U14 = (0);
   case 9:
-    s.tmp_0 = r0 = s.unnamed397___U14;
-    r0 = pxsim_Array__length(s.unnamed396___U13);
+    s.tmp_0 = r0 = s.unnamed517___U14;
+    r0 = pxsim_Array__length(s.unnamed516___U13);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 10; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed396___U13, s.unnamed397___U14);
+    r0 = pxsim_Array__getAt(s.unnamed516___U13, s.unnamed517___U14);
     s.loc1___35421 = (r0);
     s.tmp_2 = tiles_setTileAt__P30214_mk(s);
     s.tmp_2.arg0 = s.loc1___35421;
@@ -16974,21 +16974,21 @@ switch (step) {
     s.callLocIdx = 164; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
-    r0 = (s.unnamed397___U14 + 1);
-    s.unnamed397___U14 = (r0);
+    r0 = (s.unnamed517___U14 + 1);
+    s.unnamed517___U14 = (r0);
     { step = 9; continue; }
   case 10:
-    s.unnamed396___U13 = (undefined);
+    s.unnamed516___U13 = (undefined);
     s.loc2___35440 = (undefined);
-    s.unnamed398___U16 = (s.enmy1_locations___35414);
-    s.unnamed399___U17 = (0);
+    s.unnamed518___U16 = (s.enmy1_locations___35414);
+    s.unnamed519___U17 = (0);
   case 11:
-    s.tmp_0 = r0 = s.unnamed399___U17;
-    r0 = pxsim_Array__length(s.unnamed398___U16);
+    s.tmp_0 = r0 = s.unnamed519___U17;
+    r0 = pxsim_Array__length(s.unnamed518___U16);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed398___U16, s.unnamed399___U17);
+    r0 = pxsim_Array__getAt(s.unnamed518___U16, s.unnamed519___U17);
     s.loc2___35440 = (r0);
     s.tmp_2 = tiles_setTileAt__P30214_mk(s);
     s.tmp_2.arg0 = s.loc2___35440;
@@ -17060,21 +17060,21 @@ switch (step) {
     s.callLocIdx = 175; s.pc = 40; return s.tmp_0;
   case 40:
     r0 = s.retval;
-    r0 = (s.unnamed399___U17 + 1);
-    s.unnamed399___U17 = (r0);
+    r0 = (s.unnamed519___U17 + 1);
+    s.unnamed519___U17 = (r0);
     { step = 11; continue; }
   case 12:
-    s.unnamed398___U16 = (undefined);
+    s.unnamed518___U16 = (undefined);
     s.loc3___35480 = (undefined);
-    s.unnamed400___U19 = (s.enmy2_locations___35417);
-    s.unnamed401___U20 = (0);
+    s.unnamed520___U19 = (s.enmy2_locations___35417);
+    s.unnamed521___U20 = (0);
   case 13:
-    s.tmp_0 = r0 = s.unnamed401___U20;
-    r0 = pxsim_Array__length(s.unnamed400___U19);
+    s.tmp_0 = r0 = s.unnamed521___U20;
+    r0 = pxsim_Array__length(s.unnamed520___U19);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 14; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed400___U19, s.unnamed401___U20);
+    r0 = pxsim_Array__getAt(s.unnamed520___U19, s.unnamed521___U20);
     s.loc3___35480 = (r0);
     s.tmp_2 = tiles_setTileAt__P30214_mk(s);
     s.tmp_2.arg0 = s.loc3___35480;
@@ -17106,11 +17106,11 @@ switch (step) {
     s.callLocIdx = 180; s.pc = 45; return s.tmp_0;
   case 45:
     r0 = s.retval;
-    r0 = (s.unnamed401___U20 + 1);
-    s.unnamed401___U20 = (r0);
+    r0 = (s.unnamed521___U20 + 1);
+    s.unnamed521___U20 = (r0);
     { step = 13; continue; }
   case 14:
-    s.unnamed400___U19 = (undefined);
+    s.unnamed520___U19 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -17140,14 +17140,14 @@ function load1__P32178_mk(s) {
   enmy1_locations___35414: undefined,
   enmy2_locations___35417: undefined,
   loc1___35421: undefined,
-  unnamed396___U13: undefined,
-  unnamed397___U14: undefined,
+  unnamed516___U13: undefined,
+  unnamed517___U14: undefined,
   loc2___35440: undefined,
-  unnamed398___U16: undefined,
-  unnamed399___U17: undefined,
+  unnamed518___U16: undefined,
+  unnamed519___U17: undefined,
   loc3___35480: undefined,
-  unnamed400___U19: undefined,
-  unnamed401___U20: undefined,
+  unnamed520___U19: undefined,
+  unnamed521___U20: undefined,
 } }
 
 
@@ -74498,5 +74498,5 @@ const sprites_BaseSpriteSayRenderer__C29705_VT = mkVTable({
 
 const breakpoints = setupDebugger(1, ["transparency16___32182","tile1___32184","tile2___32183","tile3___32185","tile4___32186","tile5___32187","tile7___32189","tile8___32190","tile6___32188","tile9___32191","tile10___32192","tile11___32193","tile13___32194","cidk___32163","ver___32162","dif___32167","times___32157","times_normal___32165","turn___32158","times_easy___32164","times_hard___32166","nivel___32168","ls___32159","psm___32160","rc___32161","fen___32170","timercount___32171","patatacount___32172","playersprite___32179","enmyss_ins___32174","enmyssg1_ins___32175","rscoins_ins___32173","isj___32177","fwrs___32176"])
 
-return _main___P54786
+return _main___P55181
 })
