@@ -1,6 +1,5 @@
 ver = "0.3.0"
 
-
 # Show loading text
 cidk = textsprite.create("Cargando (" + ver + ")")
 cidk.x = 80
