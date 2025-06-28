@@ -1,6 +1,6 @@
-ver = "B.0.4.0"
+ver = "B.0.4.1"
 if ver[0] == "D":
-    blockSettings.write_string("lev", "-1")
+    blockSettings.write_string("lev", "8")
 # Show loading text
 cidk = textsprite.create("Version: " + ver)
 cidk.x = 80
