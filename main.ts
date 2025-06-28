@@ -3,7 +3,7 @@ let turn: number;
 let ls: number;
 let psm: number[];
 let rc: number;
-let ver = "D.0.4.0"
+let ver = "B.0.4.0"
 if (ver[0] == "D") {
     blockSettings.writeString("lev", "-1")
 }

@@ -1,4 +1,4 @@
-ver = "D.0.4.0"
+ver = "B.0.4.0"
 if ver[0] == "D":
     blockSettings.write_string("lev", "-1")
 # Show loading text
