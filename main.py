@@ -1,19 +1,188 @@
-ver = "0.3.0"
-
+ver = "D.0.4.0"
+if ver[0] == "D":
+    blockSettings.write_string("lev", "-1")
 # Show loading text
-cidk = textsprite.create("Cargando (" + ver + ")")
+cidk = textsprite.create("Version: " + ver)
 cidk.x = 80
+cidk.y = 115
 pause(1)
 music.play(music.create_song(assets.song("""title""")),music.PlaybackMode.LOOPING_IN_BACKGROUND)
+lastu = int(blockSettings.read_string("lev"))
+if not lastu:
+    lastu = 0
 
 # Tiempos por nivel en listas (índice 0 → nivel 1, índice 4 → nivel 5)
 times_easy   = [30, 35, 30, 125, 45]
 times_normal = [24, 30, 26, 120, 40]
 times_hard   = [13, 19, 19, 115, 35]
 
+def sq(n: number) -> number:
+    guess = n / 2
+    for i in range(10):
+        guess = (guess + n / guess) / 2
+    return guess
+
+def lenls(iterable: List[string] = None):
+    c = 0
+    for _ in iterable:
+        c+=1
+    return c
+
+def menudo(menu_type, options: List[string], unlocked: List[number], size=None):
+    if menu_type == "archipelago":
+        if not size:
+            square = sq(lenls(options))
+            if int(str(square)) != square:
+                print("menudo received not squarable")
+                return "Error"
+            size = [square,square]
+        dummy = sprites.create(img("."), SpriteKind.projectile)
+        islands = [dummy]
+        islands.remove_at(0)  # quitas el dummy
+        nums = [dummy]
+        nums.remove_at(0)  # quitas el dummy
+        op = 0
+        for y in range(size[1]):
+            for x in range(size[0]):
+                buff = sprites.create(assets.image("island_no") if unlocked[(y*size[1])+x] else assets.image("island_no0"), SpriteKind.projectile)
+                buff.x = (x*30) + 160-((lenls(options)*30)/2.5)
+                buff.y = (y*30) + 120-((lenls(options)*30)/3)
+                tb = textsprite.create(str(options[op]))
+                tb.x = buff.x
+                tb.y = buff.y
+                islands.append(buff)
+                nums.append(tb)
+                op += 1
+        sel = 0
+        ant = 1
+        bef = ""
+        while True:
+            print(str(sel))
+            print(str(ant))
+            print(unlocked)
+            print("aire")
+            pause(1)
+            if unlocked[ant] == 1:
+                islands[ant].set_image(assets.image("island_no"))
+            else:
+                islands[ant].set_image(assets.image("island_no0"))
+
+            islands[sel].set_image(assets.image("island_se"))
+            if unlocked[sel] == 0:
+                bsel = sel
+                sel = ant
+                ant = bsel
+                #pass
+            if controller.right.is_pressed() and bef != "R":
+                bef = "R"
+                ant = sel if sel != lenls(options)-1 else ant
+                sel += 1 if sel != lenls(options)-1 else 0
+            if not controller.right.is_pressed() and bef == "R":
+                bef = ""
+            if controller.left.is_pressed() and bef != "L":
+                bef = "L"
+                ant = sel if sel != 0 else ant
+                sel -= 1 if sel != 0 else 0
+            if not controller.left.is_pressed() and bef == "L":
+                bef = ""
+            if controller.down.is_pressed() and bef != "D":
+                bef = "D"
+                ant = sel if sel < lenls(options)-square else ant
+                sel += square if sel < lenls(options)-square else 0
+            if not controller.down.is_pressed() and bef == "D":
+                bef = ""
+            if controller.up.is_pressed() and bef != "U":
+                bef = "U"
+                ant = sel if sel >= square else ant
+                sel -= square if sel >= square else 0
+            if not controller.up.is_pressed() and bef == "U":
+                bef = ""
+            if controller.A.is_pressed():
+                for spr in islands:
+                    sprites.destroy(spr)
+                for sprd in nums:
+                    sprites.destroy(sprd)
+                return str(options[sel])
+    if menu_type == "list":
+        if not size:
+            square = lenls(options)
+        dummy = sprites.create(img("."), SpriteKind.projectile)
+        islands = [dummy]
+        islands.remove_at(0)  # quitas el dummy
+        nums = [dummy]
+        nums.remove_at(0)  # quitas el dummy
+        op = 0
+        for y in range(size[1]):
+            for x in range(size[0]):
+                buff = sprites.create(assets.image("rect_no"), SpriteKind.projectile)
+                buff.x = (x*30) + 160-((lenls(options)*30)/1.125)
+                buff.y = (y*30) + 120-((lenls(options)*30)/1)
+                tb = textsprite.create(options[op])
+                tb.x = buff.x
+                tb.y = buff.y
+                islands.append(buff)
+                nums.append(tb)
+                op += 1
+        sel = 0
+        ant = 1
+        bef = ""
+        while True:
+            pause(1)
+            islands[ant].set_image(assets.image("rect_no"))
+            islands[sel].set_image(assets.image("rect_se"))
+            print(str(sel))
+            print(str(ant))
+            print(unlocked)
+            print(sel)
+            print("aire")
+            #if not unlocked[sel]:
+            #    sel = ant
+            if controller.right.is_pressed() and bef != "R":
+                bef = "R"
+                ant = sel if sel != lenls(options)-1 else ant
+                sel += 1 if sel != lenls(options)-1 else 0
+            if not controller.right.is_pressed() and bef == "R":
+                bef = ""
+            if controller.left.is_pressed() and bef != "L":
+                bef = "L"
+                ant = sel if sel != 0 else ant
+                sel -= 1 if sel != 0 else 0
+            if not controller.left.is_pressed() and bef == "L":
+                bef = ""
+            if controller.down.is_pressed() and bef != "D":
+                bef = "D"
+                ant = sel if sel < lenls(options)-square else ant
+                sel += square if sel < lenls(options)-square else 0
+            if not controller.down.is_pressed() and bef == "D":
+                bef = ""
+            if controller.up.is_pressed() and bef != "U":
+                bef = "U"
+                ant = sel if sel >= square else ant
+                sel -= square if sel >= square else 0
+            if not controller.up.is_pressed() and bef == "U":
+                bef = ""
+            if controller.A.is_pressed():
+                for sprt in islands:
+                    sprites.destroy(sprt)
+                for sprf in nums:
+                    sprites.destroy(sprf)
+                return str(options[sel])
+    return "Error"
+
+dif = None   
+dif = menudo("list", ["Normal", "Facil", "Dificil"],[1,1,1],[1,3])
+while not dif:
+    pause(1)
+pause(1000)
+unlk: List[number] = []
+for lev in range(0,9):
+    unlk.append(1 if lev<=lastu else 0)
+nivel = int(menudo("archipelago", ["1","2","3","4","5","6","7","8","9"], unlk))
+
+
 # Ask level
-dif = None
-story.show_player_choices("Normal", "Facil", "Dificil")
+
+#story.show_player_choices("Normal", "Facil", "Dificil")
 while not dif:
     print(dif)
     dif = story.get_last_answer()
@@ -29,7 +198,7 @@ elif dif == "Dificil":
     times = times_hard
     turn = 50
 
-nivel = game.ask_for_number("¿Cual nivel?", 1)
+#nivel = game.ask_for_number("¿Cual nivel?", 1)
 
 def itws(sprite: Sprite, k: number) -> bool:
     # Get sprite position in tile coordinates
@@ -266,6 +435,8 @@ def collect_coins():
     global ls
     while True:
         if ls == 0:
+            if lastu < nivel:
+                blockSettings.write_string("lev", str(nivel))
             music.stop_all_sounds()
             music.play(music.create_song(assets.song("""win""")),music.PlaybackMode.IN_BACKGROUND)
             game.splash("Has ganao")
