@@ -3,19 +3,273 @@ let turn: number;
 let ls: number;
 let psm: number[];
 let rc: number;
-let ver = "0.3.0"
+let ver = "B.0.4.0"
+if (ver[0] == "D") {
+    blockSettings.writeString("lev", "0")
+}
+
 //  Show loading text
-let cidk = textsprite.create("Cargando (" + ver + ")")
+let cidk = textsprite.create("Version: " + ver)
 cidk.x = 80
+cidk.y = 115
 pause(1)
 music.play(music.createSong(assets.song`title`), music.PlaybackMode.LoopingInBackground)
+let lastu = parseInt(blockSettings.readString("lev"))
+if (!lastu) {
+    lastu = 0
+}
+
 //  Tiempos por nivel en listas (índice 0 → nivel 1, índice 4 → nivel 5)
 let times_easy = [30, 35, 30, 125, 45]
 let times_normal = [24, 30, 26, 120, 40]
 let times_hard = [13, 19, 19, 115, 35]
-//  Ask level
+function sq(n: number): number {
+    let guess = n / 2
+    for (let i = 0; i < 10; i++) {
+        guess = (guess + n / guess) / 2
+    }
+    return guess
+}
+
+function lenls(iterable: string[] = null): number {
+    let c = 0
+    for (let _ of iterable) {
+        c += 1
+    }
+    return c
+}
+
+function menudo(menu_type: string, options: string[], unlocked: number[], size: number[] = null): string {
+    let square: number;
+    let dummy: Sprite;
+    let islands: Sprite[];
+    let nums: Sprite[];
+    let op: number;
+    let y: number;
+    let x: number;
+    let buff: Sprite;
+    let tb: TextSprite;
+    let sel: number;
+    let ant: number;
+    let bef: string;
+    let bsel: number;
+    if (menu_type == "archipelago") {
+        if (!size) {
+            square = sq(lenls(options))
+            if (parseInt("" + square) != square) {
+                console.log("menudo received not squarable")
+                return "Error"
+            }
+            
+            size = [square, square]
+        }
+        
+        dummy = sprites.create(img`.`, SpriteKind.Projectile)
+        islands = [dummy]
+        islands.removeAt(0)
+        //  quitas el dummy
+        nums = [dummy]
+        nums.removeAt(0)
+        //  quitas el dummy
+        op = 0
+        for (y = 0; y < size[1]; y++) {
+            for (x = 0; x < size[0]; x++) {
+                buff = sprites.create(unlocked[y * size[1] + x] ? assets.image`island_no` : assets.image`island_no0`, SpriteKind.Projectile)
+                buff.x = x * 30 + 160 - lenls(options) * 30 / 2.5
+                buff.y = y * 30 + 120 - lenls(options) * 30 / 3
+                tb = textsprite.create("" + options[op])
+                tb.x = buff.x
+                tb.y = buff.y
+                islands.push(buff)
+                nums.push(tb)
+                op += 1
+            }
+        }
+        sel = 0
+        ant = 1
+        bef = ""
+        while (true) {
+            console.log("" + sel)
+            console.log("" + ant)
+            console.log(unlocked)
+            console.log("aire")
+            pause(1)
+            if (unlocked[ant] == 1) {
+                islands[ant].setImage(assets.image`island_no`)
+            } else {
+                islands[ant].setImage(assets.image`island_no0`)
+            }
+            
+            islands[sel].setImage(assets.image`island_se`)
+            if (unlocked[sel] == 0) {
+                bsel = sel
+                sel = ant
+                ant = bsel
+            }
+            
+            // pass
+            if (controller.right.isPressed() && bef != "R") {
+                bef = "R"
+                ant = sel != lenls(options) - 1 ? sel : ant
+                sel += sel != lenls(options) - 1 ? 1 : 0
+            }
+            
+            if (!controller.right.isPressed() && bef == "R") {
+                bef = ""
+            }
+            
+            if (controller.left.isPressed() && bef != "L") {
+                bef = "L"
+                ant = sel != 0 ? sel : ant
+                sel -= sel != 0 ? 1 : 0
+            }
+            
+            if (!controller.left.isPressed() && bef == "L") {
+                bef = ""
+            }
+            
+            if (controller.down.isPressed() && bef != "D") {
+                bef = "D"
+                ant = sel < lenls(options) - square ? sel : ant
+                sel += sel < lenls(options) - square ? square : 0
+            }
+            
+            if (!controller.down.isPressed() && bef == "D") {
+                bef = ""
+            }
+            
+            if (controller.up.isPressed() && bef != "U") {
+                bef = "U"
+                ant = sel >= square ? sel : ant
+                sel -= sel >= square ? square : 0
+            }
+            
+            if (!controller.up.isPressed() && bef == "U") {
+                bef = ""
+            }
+            
+            if (controller.A.isPressed()) {
+                for (let spr of islands) {
+                    sprites.destroy(spr)
+                }
+                for (let sprd of nums) {
+                    sprites.destroy(sprd)
+                }
+                return "" + options[sel]
+            }
+            
+        }
+    }
+    
+    if (menu_type == "list") {
+        if (!size) {
+            square = lenls(options)
+        }
+        
+        dummy = sprites.create(img`.`, SpriteKind.Projectile)
+        islands = [dummy]
+        islands.removeAt(0)
+        //  quitas el dummy
+        nums = [dummy]
+        nums.removeAt(0)
+        //  quitas el dummy
+        op = 0
+        for (y = 0; y < size[1]; y++) {
+            for (x = 0; x < size[0]; x++) {
+                buff = sprites.create(assets.image`rect_no`, SpriteKind.Projectile)
+                buff.x = x * 30 + 160 - lenls(options) * 30 / 1.125
+                buff.y = y * 30 + 120 - lenls(options) * 30 / 1
+                tb = textsprite.create(options[op])
+                tb.x = buff.x
+                tb.y = buff.y
+                islands.push(buff)
+                nums.push(tb)
+                op += 1
+            }
+        }
+        sel = 0
+        ant = 1
+        bef = ""
+        while (true) {
+            pause(1)
+            islands[ant].setImage(assets.image`rect_no`)
+            islands[sel].setImage(assets.image`rect_se`)
+            console.log("" + sel)
+            console.log("" + ant)
+            console.log(unlocked)
+            console.log(sel)
+            console.log("aire")
+            // if not unlocked[sel]:
+            //     sel = ant
+            if (controller.right.isPressed() && bef != "R") {
+                bef = "R"
+                ant = sel != lenls(options) - 1 ? sel : ant
+                sel += sel != lenls(options) - 1 ? 1 : 0
+            }
+            
+            if (!controller.right.isPressed() && bef == "R") {
+                bef = ""
+            }
+            
+            if (controller.left.isPressed() && bef != "L") {
+                bef = "L"
+                ant = sel != 0 ? sel : ant
+                sel -= sel != 0 ? 1 : 0
+            }
+            
+            if (!controller.left.isPressed() && bef == "L") {
+                bef = ""
+            }
+            
+            if (controller.down.isPressed() && bef != "D") {
+                bef = "D"
+                ant = sel < lenls(options) - square ? sel : ant
+                sel += sel < lenls(options) - square ? square : 0
+            }
+            
+            if (!controller.down.isPressed() && bef == "D") {
+                bef = ""
+            }
+            
+            if (controller.up.isPressed() && bef != "U") {
+                bef = "U"
+                ant = sel >= square ? sel : ant
+                sel -= sel >= square ? square : 0
+            }
+            
+            if (!controller.up.isPressed() && bef == "U") {
+                bef = ""
+            }
+            
+            if (controller.A.isPressed()) {
+                for (let sprt of islands) {
+                    sprites.destroy(sprt)
+                }
+                for (let sprf of nums) {
+                    sprites.destroy(sprf)
+                }
+                return "" + options[sel]
+            }
+            
+        }
+    }
+    
+    return "Error"
+}
+
 let dif = null
-story.showPlayerChoices("Normal", "Facil", "Dificil")
+dif = menudo("list", ["Normal", "Facil", "Dificil"], [1, 1, 1], [1, 3])
+while (!dif) {
+    pause(1)
+}
+pause(1000)
+let unlk : number[] = []
+for (let lev = 0; lev < 9; lev++) {
+    unlk.push(lev <= lastu ? 1 : 0)
+}
+let nivel = parseInt(menudo("archipelago", ["1", "2", "3", "4", "5", "6", "7", "8", "9"], unlk))
+//  Ask level
+// story.show_player_choices("Normal", "Facil", "Dificil")
 while (!dif) {
     console.log(dif)
     dif = story.getLastAnswer()
@@ -32,7 +286,7 @@ if (dif == "Normal") {
     turn = 50
 }
 
-let nivel = game.askForNumber("¿Cual nivel?", 1)
+// nivel = game.ask_for_number("¿Cual nivel?", 1)
 function itws(sprite: Sprite, k: number): boolean {
     //  Get sprite position in tile coordinates
     let col = Math.idiv(sprite.x, 16)
@@ -284,6 +538,10 @@ timer.background(function collect_coins() {
     
     while (true) {
         if (ls == 0) {
+            if (lastu < nivel) {
+                blockSettings.writeString("lev", "" + nivel)
+            }
+            
             music.stopAllSounds()
             music.play(music.createSong(assets.song`win`), music.PlaybackMode.InBackground)
             game.splash("Has ganao")
